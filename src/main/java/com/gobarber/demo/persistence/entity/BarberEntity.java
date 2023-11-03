@@ -22,5 +22,10 @@ public class BarberEntity {
     @Column(name = "phone_number", nullable = false, length = 30)
     private String phoneNumber;
 
+    @Column(length = 100)
+    private String email;
 
+    @Column(name = "image_logo")
+    private String logo;
+    
 }
