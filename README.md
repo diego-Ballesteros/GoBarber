@@ -26,9 +26,11 @@ El Sistema de Gestión de Citas para Barberías es una solución innovadora que 
 
 ### Diseño Conceptual
 
-![Modelo Conceptual de Base de Datos](https://github.com/diego-Ballesteros/GoBarber/assets/114629529/6f9acf75-e9e7-4f78-ab5b-970e06a2c5e3)
+![image](https://github.com/diego-Ballesteros/GoBarber/assets/114629529/e600fe6c-2f9c-4990-805f-04b4cbf16dd3)
+
 
 ### Diseño Lógico
 
-![Diseño Lógico de Base de Datos](https://github.com/diego-Ballesteros/GoBarber/assets/114629529/e5fc5fde-692a-48dd-8755-413eabdac0bf)
+![diseñoLogicoBDGoBarber](https://github.com/diego-Ballesteros/GoBarber/assets/114629529/f6fde6d1-7c1e-4dd6-a726-a9104dd68027)
+
 
