@@ -6,17 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Appointment_types")
+@Table(name = "reviews_to_barberShop")
 @Getter
 @Setter
 @NoArgsConstructor
-public class AppointmentTypeEntity {
+public class ReviewBarberShopEntity {
     @Id
-    @Column(name = "id_Appointment_type", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAppointmentType;
-
-    @Column(nullable = false, length = 70)
-    private String name;
-
+    @Column(name = "id_review_barberShop", nullable = false)
+    private Integer idReviewBarberShop;
+    // fk
+    // review (super entidad)
+    // barber shop id
 }

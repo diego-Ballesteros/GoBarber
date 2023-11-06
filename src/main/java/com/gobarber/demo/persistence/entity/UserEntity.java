@@ -20,10 +20,10 @@ public class UserEntity {
     @Column(name = "id_user", nullable = false)
     private Integer idUser;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String email;
 
     @Column(name = "birth_date",columnDefinition = "DATE")

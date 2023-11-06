@@ -30,4 +30,6 @@ public class BarberShopEntity {
     @Column(name = "image_logo")
     private String logo;
 
+    // fk
+    // owner id
 }

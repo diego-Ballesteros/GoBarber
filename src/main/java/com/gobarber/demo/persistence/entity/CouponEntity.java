@@ -19,7 +19,7 @@ public class CouponEntity {
     private Integer idCoupon;
     @Column(nullable = false, length = 70)
     private String title;
-    @Column(length = 200)
+    @Column(length = 250)
     private String description;
     @Column(name = "expiration_date",nullable = false, columnDefinition = "DATE")
     private LocalDate expirationDate;
