@@ -21,7 +21,7 @@ public class ServiceEntity {
     private String description;
     @Column(nullable = false, columnDefinition = "Decimal(5,2)")
     private Double price;
-    @Column(columnDefinition = "Decimal(1,2)")
+    @Column(columnDefinition = "Decimal(2,2)")
     private Double estimatedDuration; //horas y minutos ejem: 1.10 (una hora y diez minutos)
 
     //fk

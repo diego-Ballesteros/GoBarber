@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,14 @@ public class PromotionEntity {
     @Column(name = "end_date", columnDefinition = "DATETIME", nullable = false)
     private LocalDateTime endDate;
 
-    //fk
-    // barber shop id
+    // -------------------- FK ---------------------------
+    @Column(name = "barber_shop_id", nullable = false)
+    private Integer idBarberShop;
+
+    //------------------ RELATIONS ----------------------------
+    @ManyToOne
+    @JoinColumn(name = "barber_shop_id", referencedColumnName = "id_barbershop", insertable=false, updatable=false)
+    @JsonIgnore
+    private BarberShopEntity barberShop;
+
 }

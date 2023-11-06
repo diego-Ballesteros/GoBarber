@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Barbershops")
 @Getter
@@ -31,5 +33,7 @@ public class BarberShopEntity {
     private String logo;
 
     // fk
+    @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
+    private List<PromotionEntity> promotions;
     // owner id
 }

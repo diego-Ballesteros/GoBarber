@@ -16,6 +16,14 @@ public class OwnerEntity {
     @Column(name = "id_owner", nullable = false)
     private Integer idOwner;
 
-    // fk
-    // user id
+    // -------------------- FK ---------------------------
+    @Column(name = "user_id")
+    private Integer idUser;
+
+    //------------------ RELATIONS ----------------------------
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
+    //insertable = false, updatable = false)
+    @JoinColumn
+    private UserEntity user;*/
 }

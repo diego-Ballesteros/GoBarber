@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "barbers")
 @Getter
@@ -19,7 +21,16 @@ public class BarberEntity {
     @Column(nullable = false)
     private Integer yearsExperience;
 
-    // fk
-    // user id (super entidad)
+    // -------------------- FK ---------------------------
+    @Column(name = "user_id")
+    private Integer idUser;
+
+    //------------------ RELATIONS ----------------------------
+
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
+    //insertable = false, updatable = false)
+    @JoinColumn
+    private UserEntity user;*/
     // barberShop id
 }

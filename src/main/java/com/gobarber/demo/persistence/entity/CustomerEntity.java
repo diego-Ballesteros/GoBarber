@@ -15,6 +15,14 @@ public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer", nullable = false)
     private Integer idCustomer;
-    //fk
-    // user id
+    // -------------------- FK ---------------------------
+    @Column(name = "user_id")
+    private Integer idUser;
+
+    //------------------ RELATIONS ----------------------------
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
+            //insertable = false, updatable = false)
+    @JoinColumn
+    private UserEntity user;*/
 }
