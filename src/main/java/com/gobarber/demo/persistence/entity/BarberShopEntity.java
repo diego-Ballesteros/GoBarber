@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table("Barbershops")
+@Table(name = "Barbershops")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +27,7 @@ public class BarberShopEntity {
     @Column(length = 100)
     private String email;
 
-    private String image;
-    
+    @Column(name = "image_logo")
+    private String logo;
 
 }
