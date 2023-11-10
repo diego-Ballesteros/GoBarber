@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,9 @@ public class CustomerEntity {
     private Integer idUser;
 
     //------------------ RELATIONS ----------------------------
-    /*@ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
             //insertable = false, updatable = false)
-    @JoinColumn
-    private UserEntity user;*/
+    @JsonIgnore
+    private UserEntity userC;
 }

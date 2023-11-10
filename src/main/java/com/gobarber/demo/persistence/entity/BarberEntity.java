@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,11 +27,16 @@ public class BarberEntity {
     private Integer idUser;
 
     //------------------ RELATIONS ----------------------------
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
+    @JsonIgnore
+    private UserEntity userB;
 
-    /*@ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user")
+
     //insertable = false, updatable = false)
-    @JoinColumn
+
+
+    /*@JoinColumn
     private UserEntity user;*/
     // barberShop id
 }

@@ -46,10 +46,10 @@ public class UserEntity {
     @JsonIgnore
     private UserTypeEntity userTypeEntity;
 
-    /*@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userB", fetch = FetchType.EAGER)
     private List<BarberEntity> barbers;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userO", fetch = FetchType.EAGER)
     private List<OwnerEntity> owners;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<CustomerEntity> customers;*/
+    @OneToMany(mappedBy = "userC", fetch = FetchType.EAGER)
+    private List<CustomerEntity> customers;
 }

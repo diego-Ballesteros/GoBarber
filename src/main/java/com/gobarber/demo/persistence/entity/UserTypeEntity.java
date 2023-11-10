@@ -26,4 +26,5 @@ public class UserTypeEntity {
     /*@OneToMany(mappedBy = "userTypeEntity", fetch = FetchType.EAGER)
     private List<UserEntity> users;*/
 
+
 }
