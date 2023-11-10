@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,12 @@ public class LocationEntity {
     private String address;
 
     //fk
+    @Column(name = "barbershop_id", nullable = false)
+    private Integer idBarberShop;
     // barber shop id
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop", insertable = false, updatable = false)
+    @JsonIgnore
+    private BarberShopEntity barberShop;
 
 }

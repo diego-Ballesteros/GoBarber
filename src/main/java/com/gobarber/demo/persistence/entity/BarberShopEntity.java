@@ -35,5 +35,8 @@ public class BarberShopEntity {
     // fk
     @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
     private List<PromotionEntity> promotions;
+
+    @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
+    private List<LocationEntity> locations;
     // owner id
 }
