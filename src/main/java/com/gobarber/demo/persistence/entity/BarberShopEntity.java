@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,10 +34,20 @@ public class BarberShopEntity {
     private String logo;
 
     // fk
+    @Column(name = "owner_id", nullable = false)
+    private Integer idOwner;
+
     @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
     private List<PromotionEntity> promotions;
 
     @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
     private List<LocationEntity> locations;
-    // owner id
+
+    @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
+    private List<BarberEntity> barbers;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", referencedColumnName = "id_owner", insertable = false, updatable = false)
+    @JsonIgnore
+    private OwnerEntity owner;
 }

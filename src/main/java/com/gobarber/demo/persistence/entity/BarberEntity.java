@@ -26,12 +26,19 @@ public class BarberEntity {
     @Column(name = "user_id")
     private Integer idUser;
 
+    @Column(name = "barbershop_id", nullable = false)
+    private Integer idBarbershop;
+
     //------------------ RELATIONS ----------------------------
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userB;
 
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop", insertable = false, updatable = false)
+    @JsonIgnore
+    private BarberShopEntity barberShop;
 
     //insertable = false, updatable = false)
 

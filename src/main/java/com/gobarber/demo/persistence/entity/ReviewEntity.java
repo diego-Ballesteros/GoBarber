@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,14 @@ public class ReviewEntity {
     private String comment;
     @Column(name = "is_for_barber", nullable = false, columnDefinition = "TINYINT")
     private Boolean isForBarber;
+    @Column(name = "customer_id", nullable = false)
+    private Integer idCustomer;
 
     // fk
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    @JsonIgnore
+    private CustomerEntity customer;
     // cliente id mucho aqui, uno cliente
 
 

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customers")
 @Getter
@@ -23,7 +25,8 @@ public class CustomerEntity {
     //------------------ RELATIONS ----------------------------
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
-            //insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userC;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<ReviewEntity> reviews;
 }

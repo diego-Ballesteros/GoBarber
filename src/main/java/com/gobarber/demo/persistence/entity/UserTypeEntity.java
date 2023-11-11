@@ -23,8 +23,4 @@ public class UserTypeEntity {
     @Column(length = 50, nullable = false)
     private String name;
 
-    /*@OneToMany(mappedBy = "userTypeEntity", fetch = FetchType.EAGER)
-    private List<UserEntity> users;*/
-
-
 }
