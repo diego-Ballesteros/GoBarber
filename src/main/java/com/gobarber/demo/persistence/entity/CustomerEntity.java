@@ -26,7 +26,6 @@ public class CustomerEntity {
     //------------------ RELATIONS ----------------------------
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user_customer", referencedColumnName = "id_user", insertable = false, updatable = false)
-    @JsonIgnore
     private UserEntity userC;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
