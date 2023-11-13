@@ -38,7 +38,7 @@ public class ReviewEntity {
 
     //------------------ RELATIONS ----------------------------
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_user_customer", insertable = false, updatable = false)
     @JsonIgnore
     private CustomerEntity customer;
 

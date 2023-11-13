@@ -14,18 +14,14 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class OwnerEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_owner", nullable = false)
-    private Integer idOwner;
-
     // -------------------- FK ---------------------------
-    @Column(name = "user_id")
-    private Integer idUser;
+    @Id
+    @Column(name = "id_user_owner", nullable = false)
+    private Integer idUserOwner;
 
     //------------------ RELATIONS ----------------------------
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
+    @JoinColumn(name = "id_user_owner", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userO;
 

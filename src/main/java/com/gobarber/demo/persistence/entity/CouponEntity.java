@@ -35,12 +35,12 @@ public class CouponEntity {
 
     //------------------ RELATIONS ----------------------------
     @ManyToOne
-    @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop  ", insertable = false, updatable = false)
+    @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop", insertable = false, updatable = false)
     @JsonIgnore
     private BarberShopEntity barbershop;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_user_customer", insertable = false, updatable = false)
     @JsonIgnore
     private CustomerEntity customer;
 

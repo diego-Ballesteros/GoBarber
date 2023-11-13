@@ -30,7 +30,7 @@ public class ReviewBarberEntity {
     private ReviewEntity review;
 
     @ManyToOne
-    @JoinColumn(name = "barber_id", referencedColumnName = "id_barber", insertable = false, updatable = false)
+    @JoinColumn(name = "barber_id", referencedColumnName = "id_user_barber", insertable = false, updatable = false)
     @JsonIgnore
     private BarberEntity barber;
 

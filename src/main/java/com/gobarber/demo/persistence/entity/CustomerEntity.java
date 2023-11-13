@@ -14,20 +14,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class CustomerEntity {
+    // -------------------- FK ---------------------------
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_customer", nullable = false)
-    private Integer idCustomer;
+    @Column(name = "id_user_customer", nullable = false)
+    private Integer idUserCustomer;
+    // ----------------------------------------------------
 
     @Column(name = "current_city", nullable = false, length = 50)
     private String city;
-    // -------------------- FK ---------------------------
-    @Column(name = "user_id")
-    private Integer idUser;
 
     //------------------ RELATIONS ----------------------------
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
+    @JoinColumn(name = "id_user_customer", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userC;
 

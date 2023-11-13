@@ -53,7 +53,7 @@ public class BarberShopEntity {
     private List<CouponEntity> coupons;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "id_owner", insertable = false, updatable = false)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id_user_owner", insertable = false, updatable = false)
     @JsonIgnore
     private OwnerEntity owner;
 

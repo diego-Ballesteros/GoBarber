@@ -44,12 +44,12 @@ public class AppointmentEntity {
     private AppointmentTypeEntity appointmentType;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_user_customer", insertable = false, updatable = false)
     @JsonIgnore
     private CustomerEntity customer;
 
     @ManyToOne
-    @JoinColumn(name = "barber_id", referencedColumnName = "id_barber", insertable = false, updatable = false)
+    @JoinColumn(name = "barber_id", referencedColumnName = "id_user_barber", insertable = false, updatable = false)
     @JsonIgnore
     private BarberEntity barber;
 

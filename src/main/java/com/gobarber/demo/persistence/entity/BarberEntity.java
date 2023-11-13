@@ -15,23 +15,23 @@ import java.util.List;
 @NoArgsConstructor
 
 public class BarberEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_barber", nullable = false)
-    private Integer idBarber;
+    @Column(name = "id_user_barber", nullable = false)
+    private Integer idUserBarber;
+
     @Column(nullable = false)
     private Integer yearsExperience;
 
     // -------------------- FK ---------------------------
-    @Column(name = "user_id")
-    private Integer idUser;
+
 
     @Column(name = "barbershop_id", nullable = false)
     private Integer idBarbershop;
 
     //------------------ RELATIONS ----------------------------
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
+    @JoinColumn(name = "id_user_barber", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userB;
 
