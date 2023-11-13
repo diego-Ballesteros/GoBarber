@@ -1,9 +1,12 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Appointment_types")
@@ -18,5 +21,8 @@ public class AppointmentTypeEntity {
 
     @Column(nullable = false, length = 70)
     private String name;
+
+    @OneToMany(mappedBy = "appointmentType", fetch = FetchType.EAGER)
+    private List<AppointmentEntity> appointments;
 
 }

@@ -30,7 +30,7 @@ public class BarberEntity {
     private Integer idBarbershop;
 
     //------------------ RELATIONS ----------------------------
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userB;
@@ -40,10 +40,9 @@ public class BarberEntity {
     @JsonIgnore
     private BarberShopEntity barberShop;
 
-    //insertable = false, updatable = false)
+    @OneToMany(mappedBy = "barber", fetch = FetchType.EAGER)
+    private List<ReviewBarberEntity> reviewBarber;
+    @OneToMany(mappedBy = "barber", fetch = FetchType.EAGER)
+    private List<AppointmentEntity> appointments;
 
-
-    /*@JoinColumn
-    private UserEntity user;*/
-    // barberShop id
 }

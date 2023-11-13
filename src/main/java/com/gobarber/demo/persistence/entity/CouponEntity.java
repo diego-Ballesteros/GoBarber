@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +27,21 @@ public class CouponEntity {
     @Column(name = "use_date",columnDefinition = "DATE")
     private LocalDate UseDate;
 
-    // forenkey
-    // customer id
-    // barbershop id
+    //------------------ FK ----------------------------
+    @Column(name = "barbershop_id", nullable = false)
+    private Integer idBerbershop;
+    @Column(name = "customer_id", nullable = false)
+    private Integer idCustomer;
 
+    //------------------ RELATIONS ----------------------------
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop  ", insertable = false, updatable = false)
+    @JsonIgnore
+    private BarberShopEntity barbershop;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    @JsonIgnore
+    private CustomerEntity customer;
 
 }

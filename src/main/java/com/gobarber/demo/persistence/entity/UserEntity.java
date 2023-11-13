@@ -36,19 +36,23 @@ public class UserEntity {
 
     @Column(length = 100)
     private String address;
-  // -------------------- FK ---------------------------
+
+    // -------------------- FK ---------------------------
+    @Column(name = "user_type_id", nullable = false)
+    private Integer idUserType;
 
     //------------------ RELATIONS ----------------------------
     @ManyToOne
-    @JoinColumn(name = "user_type_id", referencedColumnName = "id_user_type")
-                    //insertable = false, updatable = false)
+    @JoinColumn(name = "user_type_id", referencedColumnName = "id_user_type", insertable = false, updatable = false)
     @JsonIgnore
     private UserTypeEntity userTypeEntity;
 
-    @OneToMany(mappedBy = "userB", fetch = FetchType.EAGER)
+    /*@OneToMany(mappedBy = "userB", fetch = FetchType.EAGER)
     private List<BarberEntity> barbers;
+
     @OneToMany(mappedBy = "userO", fetch = FetchType.EAGER)
     private List<OwnerEntity> owners;
+
     @OneToMany(mappedBy = "userC", fetch = FetchType.EAGER)
-    private List<CustomerEntity> customers;
+    private List<CustomerEntity> customers;*/
 }

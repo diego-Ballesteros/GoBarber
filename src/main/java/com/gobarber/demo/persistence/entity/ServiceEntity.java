@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "services")
 @Getter
@@ -24,6 +26,11 @@ public class ServiceEntity {
     @Column(columnDefinition = "Decimal(2,2)")
     private Double estimatedDuration; //horas y minutos ejem: 1.10 (una hora y diez minutos)
 
-    //fk
-    // barber shop id
+    //------------------ RELATIONS ----------------------------
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    private List<ServicesByLocationEntity> servicesByLocationEntities;
+
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    private List<ServiceByAppointmentEntity> servicesByAppointment;
+
 }

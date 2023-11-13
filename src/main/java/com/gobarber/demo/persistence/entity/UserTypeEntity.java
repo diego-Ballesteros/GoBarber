@@ -1,7 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,14 +12,17 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class UserTypeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user_type", nullable = false)
     private Integer idUserType;
-    @Column(length = 50, nullable = false)
+
+    @Column(nullable = false, length = 50)
     private String name;
 
+    //------------------ RELATIONS ----------------------------
+
+    @OneToMany(mappedBy = "userTypeEntity", fetch = FetchType.EAGER)
+    private List<UserEntity> users;
 }

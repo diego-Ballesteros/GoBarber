@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "reviews")
@@ -18,23 +19,32 @@ public class ReviewEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_review", nullable = false)
     private Integer idReview;
+
     @Column(columnDefinition = "DATETIME", nullable = false)
     private LocalDateTime date;
+
     @Column(length = 2, nullable = false)
     private Integer rating;
+
     @Column(length = 200)
     private String comment;
+
     @Column(name = "is_for_barber", nullable = false, columnDefinition = "TINYINT")
     private Boolean isForBarber;
+
+    //------------------ FK ----------------------------
     @Column(name = "customer_id", nullable = false)
     private Integer idCustomer;
 
-    // fk
+    //------------------ RELATIONS ----------------------------
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id_customer", insertable = false, updatable = false)
     @JsonIgnore
     private CustomerEntity customer;
-    // cliente id mucho aqui, uno cliente
 
+    @OneToMany(mappedBy = "review", fetch = FetchType.EAGER)
+    private List<ReviewBarberEntity> reviewBarbers;
 
+    @OneToMany(mappedBy = "review", fetch = FetchType.EAGER)
+    private List<ReviewBarberShopEntity> reviewBarberShops;
 }

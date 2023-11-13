@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +24,13 @@ public class NotificationEntity {
     @Column(name = "sending_date", columnDefinition = "DATETIME")
     private LocalDateTime sendingDate;
 
-    // fk
-    // customer id
-    // appointment id
+    //------------------  FK  ----------------------------
+    @Column(name = "appointment_id", nullable = false)
+    private Integer idAppointment;
+    //------------------ RELATIONS ----------------------------
+    @ManyToOne
+    @JoinColumn(name = "appointment_id", columnDefinition = "id_Appointment", insertable = false, updatable = false)
+    @JsonIgnore
+    private AppointmentEntity appointment;
 
 }

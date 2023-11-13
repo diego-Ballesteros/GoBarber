@@ -33,9 +33,9 @@ public class BarberShopEntity {
     @Column(name = "image_logo")
     private String logo;
 
-    // fk
     @Column(name = "owner_id", nullable = false)
     private Integer idOwner;
+    // --------------------  FK  -------------------------
 
     @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
     private List<PromotionEntity> promotions;
@@ -46,8 +46,17 @@ public class BarberShopEntity {
     @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
     private List<BarberEntity> barbers;
 
+    @OneToMany(mappedBy = "barbershop", fetch = FetchType.EAGER)
+    private List<AppointmentEntity> appointments;
+
+    @OneToMany(mappedBy = "barbershop", fetch = FetchType.EAGER)
+    private List<CouponEntity> coupons;
+
     @ManyToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "id_owner", insertable = false, updatable = false)
     @JsonIgnore
     private OwnerEntity owner;
+
+    @OneToMany(mappedBy = "barberShop", fetch = FetchType.EAGER)
+    private List<ReviewBarberShopEntity> reviewBarberShops;
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "locations")
 @Getter
@@ -23,13 +25,17 @@ public class LocationEntity {
     @Column(length = 100, nullable = false)
     private String address;
 
-    //fk
+    //------------------ FK ----------------------------
     @Column(name = "barbershop_id", nullable = false)
     private Integer idBarberShop;
-    // barber shop id
+
+    //------------------ RELATIONS ----------------------------
     @ManyToOne
     @JoinColumn(name = "barbershop_id", referencedColumnName = "id_barbershop", insertable = false, updatable = false)
     @JsonIgnore
     private BarberShopEntity barberShop;
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    private List<ServicesByLocationEntity> servicesByLocationEntities;
 
 }

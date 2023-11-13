@@ -24,7 +24,7 @@ public class OwnerEntity {
     private Integer idUser;
 
     //------------------ RELATIONS ----------------------------
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id_user", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity userO;
