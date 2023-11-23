@@ -17,7 +17,7 @@ import java.util.List;
 public class BarberEntity {
 
     @Id
-    @Column(name = "id_user_barber", nullable = false)
+    @Column(name = "id_user_barber", nullable = false, unique = true)
     private Integer idUserBarber;
 
     @Column(nullable = false)

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -16,8 +17,14 @@ import java.util.List;
 public class OwnerEntity {
     // -------------------- FK ---------------------------
     @Id
-    @Column(name = "id_user_owner", nullable = false)
+    @Column(name = "id_user_owner", nullable = false, unique = true)
     private Integer idUserOwner;
+
+    @Column(name = "registration_date", nullable = false, columnDefinition = "DATE")
+    private LocalDate registrationDate;
+
+    @Column(name = "tax_identification_number", nullable = false)
+    private Integer taxIdentificationNumber;
 
     //------------------ RELATIONS ----------------------------
     @OneToOne(fetch = FetchType.LAZY)

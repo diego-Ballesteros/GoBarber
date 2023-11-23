@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomerEntity {
     // -------------------- FK ---------------------------
     @Id
-    @Column(name = "id_user_customer", nullable = false)
+    @Column(name = "id_user_customer", nullable = false, unique = true)
     private Integer idUserCustomer;
     // ----------------------------------------------------
 

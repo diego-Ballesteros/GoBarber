@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/gobarber/owners")
 public class OwnerController {
 
     private final OwnerService ownerService;

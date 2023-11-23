@@ -19,11 +19,11 @@ public class ServiceEntity {
     private Integer idService;
     @Column(nullable = false, length = 100)
     private String name;
-    @Column(length = 200)
+    @Column(length = 300)
     private String description;
-    @Column(nullable = false, columnDefinition = "Decimal(5,2)")
+    @Column(nullable = false, columnDefinition = "Decimal(7,2)")
     private Double price;
-    @Column(columnDefinition = "Decimal(2,2)")
+    @Column(columnDefinition = "Decimal(4,2)")
     private Double estimatedDuration; //horas y minutos ejem: 1.10 (una hora y diez minutos)
 
     //------------------ RELATIONS ----------------------------

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("gobarber/reviews")
+@RequestMapping("/gobarber/reviews")
 public class ReviewController {
 
     private final ReviewService reviewService;

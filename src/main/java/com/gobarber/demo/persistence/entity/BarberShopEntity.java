@@ -18,20 +18,23 @@ public class BarberShopEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_barbershop", nullable = false)
+    @Column(name = "id_barbershop", nullable = false, unique = true)
     private Integer idBarberShop;
-
     @Column(nullable = false, length = 100)
     private String name;
-
     @Column(name = "phone_number", length = 30)
     private String phoneNumber;
-
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     private String email;
 
-    @Column(name = "image_logo")
+    @Column(nullable = false)
+    private String biografia;
+
+    @Column(name = "image_logo", nullable = false)
     private String logo;
+
+    @Column(name = "profile_picture", nullable = false)
+    private String profilePicture;
 
     @Column(name = "owner_id", nullable = false)
     private Integer idOwner;

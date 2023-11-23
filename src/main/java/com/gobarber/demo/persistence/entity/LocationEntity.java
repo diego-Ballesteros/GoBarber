@@ -24,6 +24,8 @@ public class LocationEntity {
     private String coordinates;
     @Column(length = 100, nullable = false)
     private String address;
+    @Column(nullable = false, length = 5)
+    private Double rating;
 
     //------------------ FK ----------------------------
     @Column(name = "barbershop_id", nullable = false)

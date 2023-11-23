@@ -27,8 +27,8 @@ public class ServicesByLocationEntity {
 
     //------------------ RELATIONS ----------------------------
     @ManyToOne
-    @JoinColumn(name = "service_id", referencedColumnName = "id_service", insertable = false, updatable = false)
     @JsonIgnore
+    @JoinColumn(name = "service_id", referencedColumnName = "id_service", insertable = false, updatable = false)
     private ServiceEntity service;
 
     @ManyToOne

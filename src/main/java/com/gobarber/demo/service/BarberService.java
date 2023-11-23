@@ -18,4 +18,6 @@ public class BarberService {
     public List<BarberEntity> getAll(){
         return this.barberRepository.findAll();
     }
+
+
 }
