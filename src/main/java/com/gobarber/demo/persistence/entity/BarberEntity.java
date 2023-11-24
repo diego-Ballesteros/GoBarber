@@ -20,8 +20,12 @@ public class BarberEntity {
     @Column(name = "id_user_barber", nullable = false, unique = true)
     private Integer idUserBarber;
 
+    private String name;
+
     @Column(nullable = false)
     private Integer yearsExperience;
+
+    private String photo;
 
     // -------------------- FK ---------------------------
 

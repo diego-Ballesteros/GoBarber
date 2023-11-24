@@ -1,5 +1,6 @@
 package com.gobarber.demo.service;
 
+import com.gobarber.demo.persistence.entity.BarberEntity;
 import com.gobarber.demo.persistence.entity.BarberShopEntity;
 import com.gobarber.demo.persistence.entity.LocationEntity;
 import com.gobarber.demo.persistence.entity.ServiceEntity;
@@ -32,6 +33,10 @@ public class BarbershopService {
 
     public List<ServiceEntity> getBarbershopServices (int idBarbershop){
         return this.barberShopRepository.getBarbershopServices(idBarbershop);
+    }
+
+    public List<BarberEntity> getBarbersByBarbershop(int idBarbershop){
+        return this.barberShopRepository.getBarbersByBarbershop(idBarbershop);
     }
 
     public BarberShopEntity getById (int idBarbershop){

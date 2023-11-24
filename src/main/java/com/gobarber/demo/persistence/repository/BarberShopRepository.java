@@ -1,5 +1,6 @@
 package com.gobarber.demo.persistence.repository;
 
+import com.gobarber.demo.persistence.entity.BarberEntity;
 import com.gobarber.demo.persistence.entity.BarberShopEntity;
 import com.gobarber.demo.persistence.entity.LocationEntity;
 import com.gobarber.demo.persistence.entity.ServiceEntity;
@@ -31,6 +32,12 @@ public interface BarberShopRepository extends ListCrudRepository<BarberShopEntit
             "INNER JOIN ServiceEntity s ON sl.idService = s.idService " +
             "WHERE b.idBarberShop = :idBarbershop ")
     List<ServiceEntity> getBarbershopServices (@Param("idBarbershop") int idBarbershop);
+
+    @Query(value = "SELECT bar " +
+            "FROM BarberShopEntity b " +
+            "INNER JOIN BarberEntity bar ON b.idBarberShop = bar.idBarbershop " +
+            "WHERE b.idBarberShop = :idBarbershop ")
+    List<BarberEntity> getBarbersByBarbershop (@Param("idBarbershop") int idBarbershop);
 
     @Override
     Optional<BarberShopEntity> findById(Integer integer);

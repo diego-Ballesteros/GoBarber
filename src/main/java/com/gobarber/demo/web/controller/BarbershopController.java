@@ -1,14 +1,8 @@
 package com.gobarber.demo.web.controller;
 
 import com.gobarber.demo.persistence.entity.BarberShopEntity;
-import com.gobarber.demo.persistence.entity.Dto.BarberShopDto;
-import com.gobarber.demo.persistence.entity.Dto.LocationStreetDto;
-import com.gobarber.demo.persistence.entity.Dto.ServiceDto;
-import com.gobarber.demo.persistence.entity.Dto.VistaBarberShopDto;
-import com.gobarber.demo.persistence.entity.mapper.BarbershopMapper;
-import com.gobarber.demo.persistence.entity.mapper.LocationStreetMapper;
-import com.gobarber.demo.persistence.entity.mapper.ServiceMapper;
-import com.gobarber.demo.persistence.entity.mapper.VistaBarbershopMapper;
+import com.gobarber.demo.persistence.entity.Dto.*;
+import com.gobarber.demo.persistence.entity.mapper.*;
 import com.gobarber.demo.service.BarbershopService;
 import com.gobarber.demo.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,22 +27,53 @@ public class BarbershopController {
     private final ServiceMapper serviceMapper;
     private final VistaBarbershopMapper barbershopVistaMapper;
 
+    private final BarberDtoMapper barberDtoMapper;
+
     @Autowired
-    public BarbershopController(BarbershopService barbershopService, BarbershopMapper barbershopMapper, LocationStreetMapper locationStreetMapper, LocationService locationService, ServiceMapper serviceMapper, VistaBarbershopMapper barbershopVistaMapper) {
+    public BarbershopController(BarbershopService barbershopService, BarbershopMapper barbershopMapper, LocationStreetMapper locationStreetMapper, LocationService locationService, ServiceMapper serviceMapper, VistaBarbershopMapper barbershopVistaMapper, BarberDtoMapper barberDtoMapper) {
         this.barbershopService = barbershopService;
         this.barbershopMapper = barbershopMapper;
         this.locationStreetMapper = locationStreetMapper;
         this.locationService = locationService;
         this.serviceMapper = serviceMapper;
         this.barbershopVistaMapper = barbershopVistaMapper;
+        this.barberDtoMapper = barberDtoMapper;
     }
     @GetMapping
     public ResponseEntity<List<BarberShopDto>> getAll(){
         List<BarberShopDto> barberShopDtos = null;
+        List<BarberShopDto> barberShopDtosN = new ArrayList<>();
+        List<LocationStreetDto> locationStreetDtos = null;
+        List<ServiceDto> serviceDtos = null;
+        List<BarberDto> barberDtos = null;
+
         barberShopDtos = this.barbershopService.getAll().stream()
                 .map(barbershop -> this.barbershopMapper.barbershopEntityToBarbershopDto(barbershop))
                 .collect(Collectors.toList());
-        return  ResponseEntity.ok(barberShopDtos);
+
+        for (BarberShopDto barbershop: barberShopDtos) {
+            BarberShopEntity barberShope = this.barbershopService.getById(barbershop.getIdBarberShop());
+
+            locationStreetDtos = this.barbershopService.getStreetBarberShop(barberShope.getIdBarberShop())
+                    .stream().map(location -> this.locationStreetMapper.locationEntityToLocationStreetDto(location))
+                    .collect(Collectors.toList());
+
+            serviceDtos = this.barbershopService.getBarbershopServices(barberShope.getIdBarberShop())
+                    .stream().map(service -> this.serviceMapper.serviceEntityToServiceDto(service))
+                    .collect(Collectors.toList());
+
+            barberDtos = this.barbershopService.getBarbersByBarbershop(barberShope.getIdBarberShop())
+                    .stream().map(barber -> this.barberDtoMapper.barberEntityToBarberDto(barber))
+                    .collect(Collectors.toList());
+
+            barbershop.setBarberDto(barberDtos);
+            barbershop.setServiceDto(serviceDtos);
+            barbershop.setLocation(locationStreetDtos);
+
+            barberShopDtosN.add(barbershop);
+        }
+
+        return  ResponseEntity.ok(barberShopDtosN);
     }
 
     @GetMapping("/vista/{id}")

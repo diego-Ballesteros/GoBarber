@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class BarberShopDto {
 
@@ -26,7 +28,12 @@ public class BarberShopDto {
     @JsonProperty("profilePicture")
     private String profilePicture;
 
-    //@JsonProperty("locations")
-    //private LocationDto location;
+    @JsonProperty("locations")
+    private List<LocationStreetDto> location;
+    @JsonProperty("services")
+    private List<ServiceDto> serviceDto;
+    @JsonProperty("barbers")
+    private List<BarberDto> barberDto;
+
 
 }
