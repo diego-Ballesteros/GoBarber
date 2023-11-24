@@ -50,4 +50,4 @@ jobs:
           app-name: 'GoBarber'
           slot-name: 'Production'
           package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3208FB1D502A4314866513DD4FD0E357 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_226CF04068C64E548EB1D2193A31D759 }}
